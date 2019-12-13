@@ -8,6 +8,7 @@ v = {editable = true,version = "*"}
 
 [packages]
 flask = "*"
+python-twitter = "*"
 
 [requires]
 python_version = "3.7"

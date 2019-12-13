@@ -1,16 +1,16 @@
-from flask import Flask, jsonify
-from tweets import get_tweets
+from flask import Flask, redirect, jsonify
+from tweets import Tweets
 from wordcloud import gen_wordcloud
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='view/build', static_url_path='/')
 
 @app.route('/')
 def index():
-    return { 'status': 200 }
+    return redirect('/index.html')
 
 @app.route('/tweets_at/<date>')
 def tweets_at(date):
     # TODO: 一度生成された画像があれば、そちらを使うようにしたい
-    tweets = get_tweets(date)
+    tweets = Tweets(date).get_tweets()
     wordcloud_path = gen_wordcloud(tweets)
     return wordcloud_path
