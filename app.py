@@ -1,6 +1,6 @@
 from flask import Flask, redirect, jsonify
 from tweets import Tweets
-from wordcloud import gen_wordcloud
+from xmastreewordcloud import gen_wordcloud
 
 app = Flask(__name__, static_folder='view/build', static_url_path='/')
 

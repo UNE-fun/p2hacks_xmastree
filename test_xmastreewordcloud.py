@@ -1,7 +1,16 @@
 import unittest
-import wordcloud
+import xmastreewordcloud
 
-class Test_Wordcloud(unittest.TestCase):    
+class Test_Wordcloud(unittest.TestCase): 
+    def setUp(self):
+        # 初期化処理　各テスト前に実行される 
+        pass
+    
+    def tearDown(self):
+        # 終了処理　各テスト後に実行される
+        pass
+
+
     def Test_save_image(self):
         # 生成した画像の名前は制約を満たしているか
         self.assertEqual()

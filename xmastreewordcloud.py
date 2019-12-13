@@ -1,8 +1,7 @@
 # wordlcoud作成モジュール
 
 # 必要なライブラリの導入
-import matplotlib.pyplot as plt
-import Image
+from PIL import Image
 import numpy as np
 from MeCab import Tagger
 from wordcloud import WordCloud
@@ -19,7 +18,7 @@ def gen_wordcloud(tweets):
     # 日本語をスペース区切りのテキストにし、splittextに格納する
     splitedtext =text_split(tweets)
     # 一文字以上の語全てを抽出する
-    wc = Wordcloud(regexp="[\w']+")
+    wc = WordCloud(regexp="[\w']+")
 
     # maskを作成する
     mask = make_maskarr(maskimage_path)
@@ -34,12 +33,12 @@ def gen_wordcloud(tweets):
         # height: 出力画像の高さ
     wc.wordcloud.WordCloud(background_color='white', mask=mask, countour_width=3, contour_color='green', width=800, height=600).generate(splitedtext)
 
-    # テスト的にmatplotlibを用いて表示を行う
-    plt.imshow(wc)
-    plt.show()
+    # matplotlibを用いて表示を行う
+    # plt.imshow(wc)
+    # plt.show()
 
     # 画像として保存を行う
-    wcimage_path = save_wcimage(wc)
+    wcimage_path = save_wcimage(wc, nowtime)
     return wcimage_path
 
 # 文字列をスペース区切りのテキストにし、助詞助動詞を取り除く関数
@@ -66,7 +65,7 @@ def make_maskarr(maskimage_path):
 引数：wc
 出力：wcimage_path 型：string
 """
-def save_wcimage(wc):
+def save_wcimage(wc, nowtime):
     wcimage_path = nowtime + "png"
     wc.to_file("/static/images/" + wcimage_path)
     return wcimage_path
