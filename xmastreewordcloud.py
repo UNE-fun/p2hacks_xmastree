@@ -16,8 +16,10 @@ TODO: stringが引数だと想定して開発をしていた。arrで動作す�
 出力：YYYY-MM-DDTHH:MM:SS.png
 """
 def gen_wordcloud(tweets):
+    texts = sentences_to_texts(tweets)
     # 日本語をスペース区切りのテキストにし、splittextに格納する
-    splitedtext = text_split(tweets)
+    splitedtext = text_split(texts).replace("クリスマス", "").replace("\n", "")
+    print(splitedtext)
 
     # maskを作成する
     #mask = make_maskarr(maskimage_path)
@@ -39,6 +41,14 @@ def gen_wordcloud(tweets):
     # return wcimage_path
     wc.to_file("test.png")
     return 0
+
+# 配列を受け取ったときに文字列へと格納し直す関数
+"""
+引数：sentences 型：arr
+出力：texts 型：string
+"""
+def sentences_to_texts(sentencearr):
+    return " ".join(sentencearr)
 
 # 文字列をスペース区切りのテキストにし、助詞助動詞を取り除く関数
 """
