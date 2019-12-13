@@ -1,6 +1,7 @@
 import os
 from datetime import datetime, timedelta
 import urllib
+import re
 import twitter
 
 class Tweets():
@@ -17,8 +18,12 @@ class Tweets():
 
     def get_tweets(self):
         response = self.api.GetSearch(raw_query=self.query)
-        tweets = [res.text for res in response]
+        tweets = [self.__remove_url(res.text) for res in response]
         print(tweets)
         return tweets
+
+    def __remove_url(self, text):
+        text = re.sub(r"https?://\S+", "", text, flags=re.MULTILINE)
+        return text
 
 Tweets('2019-12-13').get_tweets()
