@@ -11,7 +11,7 @@ class Test_Wordcloud(unittest.TestCase):
         pass
 
 
-    def Test_save_image(self):
+    def test_save_image(self):
         # 生成した画像の名前は制約を満たしているか
         self.assertEqual()
         # /static/images/の下に画像は存在しているか

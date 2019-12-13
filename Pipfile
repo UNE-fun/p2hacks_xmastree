@@ -9,6 +9,10 @@ v = {editable = true,version = "*"}
 [packages]
 flask = "*"
 python-twitter = "*"
+pillow = "*"
+numpy = "*"
+wordcloud = "*"
+mecab-python3 = "*"
 
 [requires]
 python_version = "3.7"
