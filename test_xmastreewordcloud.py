@@ -19,7 +19,7 @@ class Test_Wordcloud(unittest.TestCase):
     def test_save_image(self):
         testtime = datetime.datetime.now()
         # /static/images/の下に画像は存在しているか
-        self.assertTrue( os.path.exists('/static/images/'+ testtime.strftime("%Y-%M-%DT%H:%M:00") + "png"))
+        self.assertTrue( os.path.exists("static/images/" + testtime.strftime("%Y-%m-%d") + "T" + testtime.strftime("%H:%M:00") + ".png") )
     
     """
     TODO:余裕があればこの辺のテストも作れたらいいよね
