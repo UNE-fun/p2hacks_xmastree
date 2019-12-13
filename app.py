@@ -1,12 +1,12 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, redirect, jsonify
 from tweets import Tweets
 from wordcloud import gen_wordcloud
 
-app = Flask(__name__, static_folder='./view/build/static', template_folder='./view/build')
+app = Flask(__name__, static_folder='view/build', static_url_path='/')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect('/index.html')
 
 @app.route('/tweets_at/<date>')
 def tweets_at(date):
