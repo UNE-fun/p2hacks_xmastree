@@ -13,13 +13,13 @@ class Test_Wordcloud(unittest.TestCase):
     
     def tearDown(self):
         # 終了処理　各テスト後に実行される
-        os.remove("view/build/static/media/" + self.testtime.strftime("%Y-%m-%d") + "T" + self.testtime.strftime("%H:%M:00") + ".png")
+        os.remove("view/build/static/media/" + self.testtime.isoformat(timespec="seconds") + ".png")
         pass
 
 
     def test_save_image(self):
         # 指定ディレクトリに画像は存在しているか
-        self.assertTrue( os.path.exists("view/build/static/media/" + self.testtime.strftime("%Y-%m-%d") + "T" + self.testtime.strftime("%H:%M:00") + ".png") )
+        self.assertTrue( os.path.exists("view/build/static/media/" + self.testtime.isoformat(timespec="seconds") + ".png") )
     
     """
     TODO:余裕があればこの辺のテストも作れたらいいよね
