@@ -73,6 +73,7 @@ def make_maskarr(maskimage_path):
 出力：wcimage_path 型：string
 """
 def save_wcimage(wc, searchtime):
-    wcimage_path = "view/build/static/media/" + searchtime.strftime("%Y-%m-%d") + "T" + searchtime.strftime("%H:%M:00") + ".png"
+    filename = searchtime.strftime("%Y-%m-%d") + "T" + searchtime.strftime("%H:%M:00") + ".png"
+    wcimage_path = "view/build/static/media/" + filename
     wc.to_file(wcimage_path)
-    return wcimage_path
+    return filename
