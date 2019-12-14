@@ -1,5 +1,5 @@
 import os
-from datetime import datetime, timedelta
+from datetime import timedelta
 import urllib
 import re
 import twitter
@@ -12,8 +12,8 @@ class Tweets():
             access_token_key=os.environ['TWITTER_ACCESS_TOKEN_KEY'],
             access_token_secret=os.environ['TWITTER_ACCESS_TOKEN_SECRET'],
         )
-        since = datetime.fromisoformat(date).strftime('%Y-%m-%d')
-        until = (datetime.fromisoformat(date) + timedelta(days=1)).strftime('%Y-%m-%d')
+        since = date.strftime('%Y-%m-%d')
+        until = (date + timedelta(days=1)).strftime('%Y-%m-%d')
         self.query = f"q={urllib.parse.quote('クリスマス -filter:replies -filter:retweets')}&since={since}&until={until}"
 
     def get_tweets(self):
