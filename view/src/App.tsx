@@ -7,6 +7,7 @@ interface AppProps {
 interface AppState {
   timerID: number | null;
   date: string;
+  treeimg_path: string;
 }
 
 class App extends React.Component<AppProps, AppState> {
@@ -18,6 +19,7 @@ class App extends React.Component<AppProps, AppState> {
     this.state = {
       timerID: null,
       date: `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`,
+      treeimg_path: '',
     };
   }
 
@@ -28,8 +30,8 @@ class App extends React.Component<AppProps, AppState> {
   async getTree() {
     console.log(this.state.date);
     const res = await fetch(`/tweets_at/${this.state.date}`);
-    const json = await res.json();
-    console.log(json);
+    const treeimg_path = await res.text();
+    this.setState({ treeimg_path });
   }
 
   changeDate(e: React.FormEvent<HTMLInputElement>) {
@@ -43,6 +45,7 @@ class App extends React.Component<AppProps, AppState> {
   render() {
     return (
       <div className="App">
+        <img src={`/static/media/${this.state.treeimg_path}`} />
         <input type="range" onChange={this.changeDate} />
       </div>
     );
