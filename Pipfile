@@ -11,9 +11,9 @@ flask = "*"
 python-twitter = "*"
 pillow = "*"
 numpy = "*"
-wordcloud = "*"
 mecab-python3 = "*"
 uwsgi = "*"
+wordcloud = {editable = true,git = "https://github.com/i544c/word_cloud.git",ref = "scoring_word"}
 
 [requires]
 python_version = "3.7"
