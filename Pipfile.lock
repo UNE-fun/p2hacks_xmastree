@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "696194ba8f09ce4ef539bb401a8e72b35f6f1e43e03e523cfb1e09e6740dd4fc"
+            "sha256": "4a0796272f946dbfbb21ff9d3e091d51d4ebffc5652f6cb76e1bc20f7a78958e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -331,27 +331,9 @@
             "version": "==0.16.0"
         },
         "wordcloud": {
-            "hashes": [
-                "sha256:0baf47567bd426bf65963d53a1aaa69af35c2e096dc0ad9073efd5833cccd20a",
-                "sha256:358f4ead931bc8297de3dbd3a26ce8d1e3fe27c1027cce091c1b7037e4ba4904",
-                "sha256:3971ca6042745169e9645b3bbce64b790f8c211ad7c7d265049992506e033212",
-                "sha256:4335deb87b7cd9f8a6ce12de0257d15f14f98874f326e7a839f27b2c8ac792ca",
-                "sha256:473b660baee64578dad272a18253b59245a337f5dfa3a186e32cf20b0eee4110",
-                "sha256:52d0772e385e38144be2bdb58a0d7817f2c80db0640e1efad699cff8ea86533d",
-                "sha256:60c9178ea11d6537f19dad7eb5387f2516737796827710c9409ab9602d9493c7",
-                "sha256:61156874a21fffb46cdfb3518bbc9865fbfe9973ecc36eff20e86792687e439b",
-                "sha256:950882b89298c318e5f7cf10027f00b4e09402e18f719cb656aea5209a57e5a9",
-                "sha256:a8d829e19431709c1310a505687fc7c0f869c48259f4a55b5bf387642ed6da46",
-                "sha256:ae6c0030a7fd09bd35713592ba005da9457f7d38f46dc807484c5e0a379d813c",
-                "sha256:b0256ca213eb52e5261307e64faaf242742ada1322bb9d5090ecdaa9b44540ee",
-                "sha256:b99157f068826697d93d2e5e61b1acff35591d5e534818368ccd56945b9a5f29",
-                "sha256:c59387b35af772626d4a87b986eb8ab29d3d7ffca6f94da95f4c3a0961407df3",
-                "sha256:d4b970d4d30bc9baec9e8b2d7e69fb9771576bb09d6b6f6ce6f22403ca58d6de",
-                "sha256:e9ae81e8dbb5953f8cf94083b990c760b179b4000dae2babd14827d61230fc69",
-                "sha256:fc3db0cc71e4d5666f732c5b4b3c04a0d58242579cb6c6e5146ffd2890cc5d57"
-            ],
-            "index": "pypi",
-            "version": "==1.6.0"
+            "editable": true,
+            "git": "https://github.com/i544c/word_cloud.git",
+            "ref": "24823433c9f5aef0ba7692f7f1a61f0f3981ebc8"
         }
     },
     "develop": {
