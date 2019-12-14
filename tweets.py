@@ -19,7 +19,6 @@ class Tweets():
     def get_tweets(self):
         response = self.api.GetSearch(raw_query=self.query)
         tweets = [self.__remove_url(res.text) for res in response]
-        print(tweets)
         return tweets
 
     def __remove_url(self, text):
