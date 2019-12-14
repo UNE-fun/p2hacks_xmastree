@@ -22,18 +22,18 @@ def gen_wordcloud(tweets, searchtime):
     splitedtext = text_split(texts).replace("クリスマス", "").replace("\n", "")
 
     # maskを作成する
-    #mask = make_maskarr(maskimage_path)
+    maskimage_path = "xmastree.png"
+    mask = make_maskarr(maskimage_path)
 
     # wordcloudを作成する
     # WordCloud中の引数について
-        # background_color: 背景色
-        # mask: マスクする境界線の配列情報
-        # countour_width: 境界線の太さ
-        # countour_color: 境界線の色
-        # width: 出力画像の幅
-        # height: 出力画像の高さ
-    # wc = wordcloud.WordCloud(regexp="[\w']+", background_color='white', mask=mask, countour_width=3, contour_color='green', width=800, height=600).generate(splitedtext)
-    wc = wordcloud.WordCloud(font_path="fonts/NotoSansCJKjp-Regular.otf", regexp="[\w']+", background_color='white', width=800, height=600).generate(splitedtext)
+    #     background_color: 背景色
+    #     mask: マスクする境界線の配列情報
+    #     countour_width: 境界線の太さ
+    #     countour_color: 境界線の色
+    #     width: 出力画像の幅
+    #     height: 出力画像の高さ
+    wc = wordcloud.WordCloud(font_path = "fonts/NotoSansCJKjp-Regular.otf", regexp = "[\w']+", background_color = 'white', mask = mask, contour_width = 3, contour_color = 'green').generate(splitedtext)
 
     # 画像として保存を行う
     wcimage_path = save_wcimage(wc, searchtime)
@@ -73,6 +73,7 @@ def make_maskarr(maskimage_path):
 出力：wcimage_path 型：string
 """
 def save_wcimage(wc, searchtime):
-    wcimage_path = "view/build/static/media/" + searchtime.strftime("%Y-%m-%d") + "T" + searchtime.strftime("%H:%M:00") + ".png"
+    filename = searchtime.strftime("%Y-%m-%d") + "T" + searchtime.strftime("%H:%M:00") + ".png"
+    wcimage_path = "view/build/static/media/" + filename
     wc.to_file(wcimage_path)
-    return wcimage_path
+    return filename
