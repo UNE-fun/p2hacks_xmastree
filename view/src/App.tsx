@@ -45,7 +45,7 @@ class App extends React.Component<AppProps, AppState> {
   render() {
     return (
       <div className="App">
-        <img src={`/static/media/${this.state.treeimg_path}`} />
+        <img src={`/static/media/${this.state.treeimg_path}`} className="treeimg" />
         <input type="range" onChange={this.changeDate} />
       </div>
     );

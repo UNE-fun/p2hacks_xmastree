@@ -23,3 +23,13 @@ pipenv run flask run`
 ```
 
 Now, you can write code!
+
+## Deploy
+We use [Dokku](http://dokku.viewdocs.io/dokku/).
+
+Frontend
+```sh
+cd view && yarn build
+rsync -av view/build/ root@dokku.i544c.me:/var/lib/dokku/data/storage/xmastree/view/build/
+ssh root@dokku.i544c.me chown -R 32767:32767 /var/lib/dokku/data/storage/xmastree/view/
+```
