@@ -13,7 +13,7 @@ def index():
 @app.route('/tweets_at/<date_str>')
 def tweets_at(date_str):
     date = datetime.fromisoformat(date_str)
-    wordcloudimagename = date.strftime("%Y-%m-%d") + "T" + date.strftime("%H:%M:00") + ".png"
+    wordcloudimagename = date.isoformat(timespec="seconds") + ".png"
     if(os.path.exists("view/build/static/media/" + wordcloudimagename)):
         # 生成された画像が存在する場合
         wordcloud_path = wordcloudimagename
