@@ -13,7 +13,7 @@ class Test_Wordcloud(unittest.TestCase):
     
     def tearDown(self):
         # 終了処理　各テスト後に実行される
-        os.remove("view/build/static/media/" + self.testtime.strftime("%Y-%m-%d") + "T" + self.testtime.strftime("%H:%M:00") + ".png")
+        # os.remove("view/build/static/media/" + self.testtime.strftime("%Y-%m-%d") + "T" + self.testtime.strftime("%H:%M:00") + ".png")
         pass
 
 
