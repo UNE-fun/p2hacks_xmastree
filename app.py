@@ -1,6 +1,6 @@
 from flask import Flask, redirect, jsonify
 from tweets import Tweets
-from wordcloud import gen_wordcloud
+from xmastreewordcloud import gen_wordcloud
 
 app = Flask(__name__, static_folder='view/build', static_url_path='/')
 
@@ -12,5 +12,5 @@ def index():
 def tweets_at(date):
     # TODO: 一度生成された画像があれば、そちらを使うようにしたい
     tweets = Tweets(date).get_tweets()
-    wordcloud_path = gen_wordcloud(tweets)
+    wordcloud_path = gen_wordcloud(tweets, date)
     return wordcloud_path
