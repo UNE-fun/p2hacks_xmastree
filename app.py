@@ -12,5 +12,5 @@ def index():
 def tweets_at(date):
     # TODO: 一度生成された画像があれば、そちらを使うようにしたい
     tweets = Tweets(date).get_tweets()
-    wordcloud_path = gen_wordcloud(tweets)
+    wordcloud_path = gen_wordcloud(tweets, date)
     return wordcloud_path

@@ -12,10 +12,11 @@ import datetime
 TODO: 文字列から成るtweetsを元に、wordcloudの画像を生成し、`/static/images/`内に保存、その画像のパス(ファイル名だけで良い)を返す。
 画像のファイル名は、`2019-12-13T12:00:00`とし、これは日本時間によるものとする。
 TODO: stringが引数だと想定して開発をしていた。arrで動作するように修正をする。
-引数：tweets 型：arr
+引数1：tweets 型：arr
+引数2：searchtime 型：datetime
 出力：YYYY-MM-DDTHH:MM:SS.png
 """
-def gen_wordcloud(tweets):
+def gen_wordcloud(tweets, searchtime):
     texts = sentences_to_texts(tweets)
     # 日本語をスペース区切りのテキストにし、splittextに格納する
     splitedtext = text_split(texts).replace("クリスマス", "").replace("\n", "")
@@ -35,8 +36,7 @@ def gen_wordcloud(tweets):
     wc = wordcloud.WordCloud(font_path="fonts/NotoSansCJKjp-Regular.otf", regexp="[\w']+", background_color='white', width=800, height=600).generate(splitedtext)
 
     # 画像として保存を行う
-    nowtime = datetime.datetime.now()
-    wcimage_path = save_wcimage(wc, nowtime)
+    wcimage_path = save_wcimage(wc, searchtime)
     return wcimage_path
 
 # 配列を受け取ったときに文字列へと格納し直す関数
@@ -69,10 +69,10 @@ def make_maskarr(maskimage_path):
 # wc画像を保存、保存先のパスを返す関数
 """
 引数1：wc
-引数2：nowtime 型：datetimeオブジェクト
+引数2：searchtime 型：datetime
 出力：wcimage_path 型：string
 """
-def save_wcimage(wc, nowtime):
-    wcimage_path = "view/build/static/media/" + nowtime.strftime("%Y-%m-%d") + "T" + nowtime.strftime("%H:%M:00") + ".png"
+def save_wcimage(wc, searchtime):
+    wcimage_path = "view/build/static/media/" + searchtime.strftime("%Y-%m-%d") + "T" + searchtime.strftime("%H:%M:00") + ".png"
     wc.to_file(wcimage_path)
     return wcimage_path
