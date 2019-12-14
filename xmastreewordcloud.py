@@ -27,12 +27,12 @@ def gen_wordcloud(tweets, searchtime):
 
     # wordcloudを作成する
     # WordCloud中の引数について
-        # background_color: 背景色
-        # mask: マスクする境界線の配列情報
-        # countour_width: 境界線の太さ
-        # countour_color: 境界線の色
-        # width: 出力画像の幅
-        # height: 出力画像の高さ
+    #     background_color: 背景色
+    #     mask: マスクする境界線の配列情報
+    #     countour_width: 境界線の太さ
+    #     countour_color: 境界線の色
+    #     width: 出力画像の幅
+    #     height: 出力画像の高さ
     wc = wordcloud.WordCloud(font_path = "fonts/NotoSansCJKjp-Regular.otf", regexp = "[\w']+", background_color = 'white', mask = mask, contour_width = 3, contour_color = 'green').generate(splitedtext)
 
     # 画像として保存を行う
