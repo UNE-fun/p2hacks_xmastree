@@ -45,7 +45,7 @@ def gen_wordcloud(tweets, searchtime):
 出力：wcimage_path 型：string
 """
 def save_wcimage(wc, searchtime):
-    filename = searchtime.strftime("%Y-%m-%d") + "T" + searchtime.strftime("%H:%M:00") + ".png"
+    filename = searchtime.isoformat(timespec="seconds") + ".png"
     wcimage_path = "view/build/static/media/" + filename
     wc.to_file(wcimage_path)
     return filename
