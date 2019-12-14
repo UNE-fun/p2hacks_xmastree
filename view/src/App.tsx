@@ -18,18 +18,18 @@ class App extends React.Component<AppProps, AppState> {
     const now = new Date();
     this.state = {
       timerID: null,
-      date: `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`,
+      date: now.toISOString(),
       treeimg_path: '',
-    };
+   };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.getTree();
   }
 
   async getTree() {
-    console.log(this.state.date);
-    const res = await fetch(`/tweets_at/${this.state.date}`);
+    const date_str = this.state.date.replace(/\.\d+Z$/, '');
+    const res = await fetch(`/tweets_at/${date_str}`);
     const treeimg_path = await res.text();
     this.setState({ treeimg_path });
   }
@@ -39,14 +39,19 @@ class App extends React.Component<AppProps, AppState> {
     const timerID = window.setTimeout(this.getTree, 2000);
     this.setState({ timerID });
     const target = e.target as HTMLInputElement;
-    this.setState({ date: target.value });
+    const now = new Date();
+    now.setMinutes(Math.floor(now.getMinutes() / 15) * 15 + Number(target.value) * 15);
+    this.setState({ date: now.toISOString() });
   }
 
   render() {
     return (
       <div className="App">
-        <img src={`/static/media/${this.state.treeimg_path}`} />
-        <input type="range" onChange={this.changeDate} />
+        <div>{ this.state.date }</div>
+        <input type="range" onChange={this.changeDate} max="0" min="-50" />
+        <div>
+          <img src={`/static/media/${this.state.treeimg_path}`} className="treeimg" />
+        </div>
       </div>
     );
   }
