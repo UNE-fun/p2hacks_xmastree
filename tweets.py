@@ -14,11 +14,12 @@ class Tweets():
         )
         since = date.strftime('%Y-%m-%d')
         until = (date + timedelta(days=1)).strftime('%Y-%m-%d')
-        self.query = f"q={urllib.parse.quote('クリスマス -filter:replies -filter:retweets')}&since={since}&until={until}"
+        self.query = f"q={urllib.parse.quote('クリスマス -filter:replies -filter:retweets')}&since={since}&until={until}&count=100"
 
     def get_tweets(self):
         response = self.api.GetSearch(raw_query=self.query)
         tweets = [self.__remove_url(res.text) for res in response]
+        print(tweets)
         return tweets
 
     def __remove_url(self, text):
